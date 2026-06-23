@@ -42,7 +42,7 @@ Twenty domain modules (`00_Core` through `19_Review_Outputs`) plus the cross-cut
 | `15-19` | Engineering Practices, Team Leadership, Cost/Business, Domain Architectures, Review/Output Standards |
 | `99` | Decision Engine (routing, conflict resolution, confidence calibration) |
 
-## Documentation (6 files)
+## Documentation (7 files)
 
 | Path | Purpose |
 |---|---|
@@ -52,6 +52,7 @@ Twenty domain modules (`00_Core` through `19_Review_Outputs`) plus the cross-cut
 | `docs/EXAMPLES.md` | Quick-reference example prompts per command mode. |
 | `docs/SHOWCASE.md` | Narrative scenarios illustrating ARCHON's value. |
 | `docs/BRAND_VOICE.md` | Writing/tone guidelines for contributing new content. |
+| `docs/images/archon_os.png` | README hero image — the decision-convergence diagram referenced at the top of `README.md`. |
 
 ## Examples (3 files)
 

@@ -3,6 +3,16 @@
 All notable changes to ARCHON are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/); versioning follows [VERSIONING.md](VERSIONING.md).
 
+## [1.2.0] - 2026-06-23
+
+### Added
+- `docs/images/archon_os.png` — README hero image (decision-convergence diagram), registered in `MODULE_INDEX.md`.
+- A "Code of Conduct" section in `CONTRIBUTING.md`.
+- A "Keep the README version badge in sync" hard constraint in `VERSIONING.md`.
+
+### Changed
+- `README.md` rewritten as a premium, badge-led project page: hero section, Philosophy, Who Is It For, Why ARCHON OS?, Architecture Overview, a simplified 13-item "Big Picture" module summary alongside the authoritative 21-module map, Features, a worked Quick Start example, Example Questions, a checklist Roadmap, and a Documentation index — while keeping every cross-reference and structural claim (21 modules, 58 reference files, 57 topics, 8 commands) accurate to the real repository. Project identity stays `ARCHON` (`ARCHON OS` used as the README-level tagline only); no rename of the plugin, package, or repository.
+
 ## [1.1.0] - 2026-06-23
 
 ### Added

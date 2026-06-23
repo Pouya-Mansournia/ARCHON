@@ -39,3 +39,14 @@ This is a structural change — open an issue/discussion first if possible. New 
 ## Reporting Issues
 
 Open a GitHub issue describing what's wrong (outdated technology guidance, broken cross-reference, missing topic) and which file(s) are affected.
+
+## Code of Conduct
+
+This project applies the same engineering-reality standard to people that it applies to architecture decisions: be direct, be precise, and argue about the work rather than the person.
+
+- Disagreements are welcome and expected — critique a recommendation's reasoning, trade-offs, or evidence, not its author.
+- No harassment, personal attacks, or discriminatory language, in issues, pull requests, or discussions.
+- Assume good faith. Most disagreements here are about engineering trade-offs, not character.
+- Maintainers may close, edit, or reject contributions that don't meet this standard, with an explanation.
+
+Report a violation by opening a GitHub issue or contacting the maintainer directly. This is a deliberately short code of conduct in the same spirit as the rest of this repository: no filler, only what changes behavior.

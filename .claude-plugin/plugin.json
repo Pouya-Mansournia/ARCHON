@@ -1,0 +1,20 @@
+{
+  "name": "archon",
+  "version": "1.2.0",
+  "description": "ARCHON is a single Principal-Engineer / CTO-level architecture decision agent spanning five seniority levels (L1 Foundations to L5 CTO & Business). It turns a product idea or technical question into production-grade architecture decisions with explicit trade-offs, risk, cost, and confidence levels — backed by a 20-domain, 57-topic engineering knowledge base.",
+  "author": {
+    "name": "Pouya Mansournia"
+  },
+  "homepage": "https://github.com/Pouya-Mansournia/ARCHON",
+  "license": "MIT",
+  "keywords": [
+    "architecture",
+    "cto",
+    "principal-engineer",
+    "system-design",
+    "decision-engine",
+    "robotics",
+    "ai-infrastructure",
+    "platform-engineering"
+  ]
+}
