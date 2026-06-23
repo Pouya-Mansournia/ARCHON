@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs / local scratch
+*.log
+.tmp/
+.cache/
+
+# Claude Code local state (not the plugin source)
+.claude/settings.local.json
