@@ -1,9 +1,5 @@
 # ARCHON
 
-<p align="center">
-  <img src="docs/images/archon_os.png" alt="ARCHON OS — Optimize for Engineering Reality" width="100%">
-</p>
-
 <p align="center"><strong>From Idea to Production. Optimize for Engineering Reality.</strong></p>
 
 <p align="center">
