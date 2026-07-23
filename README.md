@@ -8,18 +8,75 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
-  <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/version-1.2.0-orange.svg"></a>
+  <a href="CHANGELOG.md"><img alt="Version" src="https://img.shields.io/badge/version-1.6.0-orange.svg"></a>
   <a href="CONTRIBUTING.md"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
   <a href="CONTRIBUTING.md#code-of-conduct"><img alt="Code of Conduct" src="https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-blueviolet.svg"></a>
   <a href="https://github.com/Pouya-Mansournia/ARCHON/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/Pouya-Mansournia/ARCHON.svg"></a>
   <a href="https://github.com/Pouya-Mansournia/ARCHON"><img alt="Open Source" src="https://img.shields.io/badge/open%20source-%E2%9D%A4-red.svg"></a>
 </p>
 
-**A Principal Engineer / CTO in your `claude` CLI.**
+**Stop guessing your stack. Get a defensible engineering decision in one prompt.**
 
-ARCHON — codenamed **ARCHON OS** — is a Claude Code plugin that turns a product idea, a technology choice, or an existing system into a production-grade engineering decision: explicit trade-offs, risks, cost impact, and a stated confidence level, not a list of options. It is one cohesive persona operating at five seniority altitudes (L1 Foundations through L5 CTO & Business), backed by a 20-domain, 57-topic engineering knowledge base.
+Ask ARCHON "Postgres or Mongo," "monolith or microservices," "build or buy" — get back what to use, why, why not the alternatives, the cost, the risk, and a stated confidence level. Not a list of options. Not a shrug.
 
-It will tell you plainly when a question hasn't been narrowed enough to answer responsibly yet. That's a feature, not a hedge.
+One `claude` CLI plugin. One Principal Engineer / CTO persona spanning five seniority levels (L1 Foundations → L5 CTO & Business), backed by a 20-domain, 57-topic engineering knowledge base — and it tells you plainly when your question isn't narrowed enough to answer responsibly yet. That's a feature, not a hedge.
+
+---
+
+## See It In Action
+
+<p align="center">
+  <img src="docs/images/archon_demo.gif" alt="ARCHON terminal demo: /archon-principal answering a real stack decision in the Output Standard format" width="100%">
+</p>
+
+**The prompt:**
+
+```
+/archon-principal We're a 6-person team shipping a B2B SaaS product expected to hit ~10k users in year one. What's our default stack?
+```
+
+**The answer:**
+
+> **What to use:** Next.js (frontend) + Go (backend) + PostgreSQL + Redis + RabbitMQ, deployed as a modular monolith on AWS.
+> **Why:** At 10k users and a 6-person team, this stack covers the actual load with room to spare, keeps one deployable unit instead of a distributed system you don't need yet, and every piece is boring, well-documented, and hireable-for.
+> **Why not microservices / Kubernetes day one:** Real operational cost (service discovery, distributed tracing, multi-cluster ops) with no corresponding benefit at this scale — see [`skills/00_Core/reference/over-under-engineering.md`](skills/00_Core/reference/over-under-engineering.md).
+> **Confidence:** High.
+>
+> *(The full ten-part breakdown — trade-offs, risk, cost, scalability, security, and migration path — follows [The Output Standard](#the-output-standard) below. Complete worked transcript: [`examples/architecture-decision-modular-monolith-vs-microservices.md`](examples/architecture-decision-modular-monolith-vs-microservices.md).)*
+
+## Why ARCHON OS?
+
+Most "should we use X or Y" questions get answered with a shrug, a vibe, or whatever the loudest tab on Hacker News said this week. ARCHON answers them the way a principal engineer accountable for the outcome would:
+
+- **Python or Go** for this service, given the team and the latency budget?
+- **PostgreSQL or MongoDB** for this data model, and what does that decision cost you in six months?
+- **RabbitMQ or Kafka** — and is "we might need Kafka later" actually true, or just fashionable?
+- **Monolith or microservices**, for a team this size, at this stage?
+- **Docker Compose or Kubernetes** — what's the actual operational cost of being wrong in either direction?
+
+Every one of those questions has a *context-dependent* right answer and a *context-independent* wrong way to decide it (whoever argues loudest, whatever's trending, whatever the last company did). ARCHON exists to replace the second with the first.
+
+## Features
+
+- One agent, five seniority levels — no routing ambiguity between a simulated executive team.
+- A fixed 10-part Output Standard on every concrete recommendation: what, why, why-not, trade-offs, risks, cost, scalability, security, confidence, migration path.
+- A Principal Engineer pre-flight checklist that runs before every answer.
+- 9 purpose-built commands (`/archon-cto`, `/archon-principal`, `/archon-robotics`, `/archon-ai`, `/archon-review`, `/archon-plan`, `/archon-reflect`, `/archon-repo-audit`, and default `/archon`).
+- An adversarial critic mode (`/archon-review`) and a reflection mode (`/archon-reflect`) that re-examines its own prior calls — Unchanged / Refined / Reversed.
+- A stated confidence level (High / Medium / Low) on every recommendation, never false certainty.
+- 100% English content, MIT-licensed, structurally validated on every push via GitHub Actions.
+- No required external integrations — knowledge-only, stateless, works the moment it's installed. Optional, read-only GitHub MCP access (`mcp__github__*`) when connected, so `/archon-review`, `/archon-reflect`, and `/archon-repo-audit` can ground themselves in a real PR, issue, or repo config instead of a paraphrase of one. See ADR-005.
+
+## Who Is It For
+
+- **Founders and technical co-founders** deciding their first real stack before it calcifies.
+- **Software engineers** who want a second opinion that argues back.
+- **Principal/staff engineers** who need a fast, ADR-ready sanity check on a design.
+- **CTOs and VPs of Engineering** framing a technical decision for cost, risk, and the board.
+- **Product managers** who need to understand *why* engineering says a request is six weeks, not six days.
+- **AI teams** shipping LLM/RAG products who need MLOps and AI-safety guardrails, not just a model API key.
+- **IoT and robotics teams** working through embedded, real-time, and sensor-fusion trade-offs.
+- **Researchers** who want a structured second pass on architecture documentation.
 
 ---
 
@@ -38,32 +95,9 @@ This is the compressed, field-checklist version. The full ten-part priority orde
 
 ARCHON optimizes for engineering reality. It does not optimize for hype.
 
-## Who Is It For
-
-- **Founders and technical co-founders** deciding their first real stack before it calcifies.
-- **Software engineers** who want a second opinion that argues back.
-- **Principal/staff engineers** who need a fast, ADR-ready sanity check on a design.
-- **CTOs and VPs of Engineering** framing a technical decision for cost, risk, and the board.
-- **Product managers** who need to understand *why* engineering says a request is six weeks, not six days.
-- **AI teams** shipping LLM/RAG products who need MLOps and AI-safety guardrails, not just a model API key.
-- **IoT and robotics teams** working through embedded, real-time, and sensor-fusion trade-offs.
-- **Researchers** who want a structured second pass on architecture documentation.
-
-## Why ARCHON OS?
-
-Most "should we use X or Y" questions get answered with a shrug, a vibe, or whatever the loudest tab on Hacker News said this week. ARCHON answers them the way a principal engineer accountable for the outcome would:
-
-- **Python or Go** for this service, given the team and the latency budget?
-- **PostgreSQL or MongoDB** for this data model, and what does that decision cost you in six months?
-- **RabbitMQ or Kafka** — and is "we might need Kafka later" actually true, or just fashionable?
-- **Monolith or microservices**, for a team this size, at this stage?
-- **Docker Compose or Kubernetes** — what's the actual operational cost of being wrong in either direction?
-
-Every one of those questions has a *context-dependent* right answer and a *context-independent* wrong way to decide it (whoever argues loudest, whatever's trending, whatever the last company did). ARCHON exists to replace the second with the first.
-
 ## Architecture Overview
 
-The diagram above is the model: many inputs — a stack question, a scaling concern, a security review, a cost trade-off — converge through one decision engine into one defensible answer. ARCHON carries no hardcoded domain opinions; `skills/99_Decision_Engine/` routes the question to whichever domain modules it actually touches, resolves conflicts between their decision rules with the priority order above, and renders the result in [The Output Standard](#the-output-standard) below with an explicit confidence level.
+The hero diagram at the top of this page is the model: many inputs — a stack question, a scaling concern, a security review, a cost trade-off — converge through one decision engine into one defensible answer. ARCHON carries no hardcoded domain opinions; `skills/99_Decision_Engine/` routes the question to whichever domain modules it actually touches, resolves conflicts between their decision rules with the priority order above, and renders the result in [The Output Standard](#the-output-standard) below with an explicit confidence level.
 
 ## The Five Levels
 
@@ -130,17 +164,6 @@ skills/
 
 Each domain ships a concise `SKILL.md` (scope, decision rules, comparison table, pointer list) plus one detailed `reference/*.md` file per sub-topic — 21 `SKILL.md` files and 58 reference files in total, covering roughly 57 topics. The agent carries no hardcoded domain knowledge; it loads the relevant `SKILL.md` and reference files for whatever the question actually touches. Full index: [`SKILL_REGISTRY.md`](SKILL_REGISTRY.md). Why it's structured this way: [`ARCHITECTURE_DECISIONS.md`](ARCHITECTURE_DECISIONS.md) (ADR-003, ADR-004).
 
-## Features
-
-- One agent, five seniority levels — no routing ambiguity between a simulated executive team.
-- A fixed 10-part Output Standard on every concrete recommendation: what, why, why-not, trade-offs, risks, cost, scalability, security, confidence, migration path.
-- A Principal Engineer pre-flight checklist that runs before every answer.
-- 8 purpose-built commands (`/archon-cto`, `/archon-principal`, `/archon-robotics`, `/archon-ai`, `/archon-review`, `/archon-plan`, `/archon-reflect`, and default `/archon`).
-- An adversarial critic mode (`/archon-review`) and a reflection mode (`/archon-reflect`) that re-examines its own prior calls — Unchanged / Refined / Reversed.
-- A stated confidence level (High / Medium / Low) on every recommendation, never false certainty.
-- 100% English content, MIT-licensed, structurally validated on every push via GitHub Actions.
-- Zero required external integrations — knowledge-only, stateless, works the moment it's installed.
-
 ## The Output Standard
 
 Every concrete architecture recommendation follows the same ten-part shape — not a free-form essay, not a bare opinion:
@@ -165,23 +188,16 @@ git clone https://github.com/Pouya-Mansournia/ARCHON.git
 cd ARCHON
 ```
 
-Load it as a local Claude Code plugin, then:
+Load it as a local Claude Code plugin, then ask it anything:
 
 ```
 claude
-> /archon-principal We're a 6-person team shipping a B2B SaaS product expected to hit ~10k users in year one. What's our default stack?
+> /archon-principal <your architecture question>
 ```
 
-**ARCHON:**
+See the full worked example in [See It In Action](#see-it-in-action) above, or the complete worked transcript: [`examples/architecture-decision-modular-monolith-vs-microservices.md`](examples/architecture-decision-modular-monolith-vs-microservices.md).
 
-> **What to use:** Next.js (frontend) + Go (backend) + PostgreSQL + Redis + RabbitMQ, deployed as a modular monolith on AWS.
-> **Why:** At 10k users and a 6-person team, this stack covers the actual load with room to spare, keeps one deployable unit instead of a distributed system you don't need yet, and every piece is boring, well-documented, and hireable-for.
-> **Why not microservices / Kubernetes day one:** Real operational cost (service discovery, distributed tracing, multi-cluster ops) with no corresponding benefit at this scale — see [`skills/00_Core/reference/over-under-engineering.md`](skills/00_Core/reference/over-under-engineering.md).
-> **Confidence:** High.
->
-> *(The full ten-part breakdown — trade-offs, risk, cost, scalability, security, and migration path — follows [The Output Standard](#the-output-standard) above. See the complete worked transcript below for the long-form version of this exact format.)*
-
-Full install instructions: [`docs/INSTALL.md`](docs/INSTALL.md). Guided first session: [`docs/QUICKSTART.md`](docs/QUICKSTART.md). Complete worked transcript in this format: [`examples/architecture-decision-modular-monolith-vs-microservices.md`](examples/architecture-decision-modular-monolith-vs-microservices.md).
+Full install instructions: [`docs/INSTALL.md`](docs/INSTALL.md). Guided first session: [`docs/QUICKSTART.md`](docs/QUICKSTART.md).
 
 ## Commands
 
@@ -195,6 +211,7 @@ Full install instructions: [`docs/INSTALL.md`](docs/INSTALL.md). Guided first se
 | `/archon-review` | Review/critic | Adversarial critique of an existing design or PR |
 | `/archon-plan` | Planner | Phased MVP → Growth → Scale execution plan |
 | `/archon-reflect` | Reflection | Re-examine a past decision: Unchanged / Refined / Reversed |
+| `/archon-repo-audit` | Repository optimization | Audit → benchmark → score → improvement plan for turning any repo into a production-grade OSS project |
 
 Full detail on each: [`COMMAND_REGISTRY.md`](COMMAND_REGISTRY.md).
 
@@ -209,17 +226,20 @@ Full detail on each: [`COMMAND_REGISTRY.md`](COMMAND_REGISTRY.md).
 /archon-review Here's our checkout flow design — what breaks first?
 /archon-plan MVP → Series A scale plan for a two-sided marketplace.
 /archon-reflect We chose microservices 8 months ago — still the right call?
+/archon-repo-audit Audit this repo and tell me what's missing before a public launch.
 ```
 
 More worked prompts per mode: [`docs/EXAMPLES.md`](docs/EXAMPLES.md). Narrative scenarios: [`docs/SHOWCASE.md`](docs/SHOWCASE.md).
 
 ## Roadmap
 
-**Now (v1.1)**
+**Now (v1.6)**
 - [x] Full L1-L5 knowledge base across 20 skill domains, 57 topics.
-- [x] Single ARCHON agent persona and 8 core commands.
+- [x] Single ARCHON agent persona and 9 core commands.
 - [x] Principal Engineer Thinking pre-flight checklist.
 - [x] Registries, governance docs, and onboarding docs.
+- [x] Optional, read-only GitHub MCP access for `/archon-review`, `/archon-reflect`, and `/archon-repo-audit` (see ADR-005).
+- [x] README demo GIF and a repository-optimization command with Quick Win / Mermaid / license decision rules.
 
 **Next (v1.x)**
 - [ ] Worked "Architecture Review" transcripts for 3-5 real-world stack combinations (AI SaaS on AWS, robotics fleet platform, fintech ledger system).
@@ -229,7 +249,7 @@ More worked prompts per mode: [`docs/EXAMPLES.md`](docs/EXAMPLES.md). Narrative 
 
 **Later (v2.0+)**
 - [ ] Optional companion lightweight skill if ARCHON is white-labeled for a team (see ADR-002).
-- [ ] Optional read-only integration hooks for project trackers / knowledge bases, only if a real need emerges.
+- [ ] Additional read-only integrations (project trackers / knowledge bases) — only if a real, command-specific need emerges, each justified by its own ADR per the ADR-005 precedent.
 - [ ] Community-contributed reference modules for additional verticals (healthtech, gaming infra, telecom).
 
 **Explicitly not planned:** splitting ARCHON into a multi-agent C-suite roster. Evaluated and deliberately rejected — see [`ARCHITECTURE_DECISIONS.md`](ARCHITECTURE_DECISIONS.md), ADR-001. Full detail: [`ROADMAP.md`](ROADMAP.md).

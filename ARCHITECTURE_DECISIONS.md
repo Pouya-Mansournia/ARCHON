@@ -71,3 +71,22 @@ This log records the meta-decisions made while designing ARCHON as a Claude Code
 **Trade-offs:** More files to navigate than a single monolithic doc per domain. Mitigated by `MODULE_INDEX.md`, which lists every reference file with a one-line description.
 
 **Confidence:** High.
+
+---
+
+## ADR-005: Optional, Read-Only GitHub MCP Access — Not a Break From "Knowledge-Only"
+
+**Status:** Accepted
+**Date:** 2026-07-23
+
+**Context:** ARCHON shipped at v1.0 as knowledge-only and stateless with zero required external integrations (see README, `ROADMAP.md` "Later" section: "Optional read-only integration hooks for project trackers / knowledge bases, only if a real need emerges"). `/archon-review`, `/archon-reflect`, and the new `/archon-repo-audit` (added same release) all explicitly claim to ground their output in "the actual codebase" or "the actual repository" — but the agent's original toolset (`Read, Grep, Glob, WebSearch`) only sees a locally checked-out working copy, not live PR status, issue history, CI results, or a remote repo the user hasn't cloned.
+
+**Decision:** Grant the `archon` agent read-only access to GitHub via MCP (`mcp__github__*` tools), in addition to its existing `Read, Grep, Glob, WebSearch` tools. This is additive, not a replacement — ARCHON still works fully from local context and user-pasted descriptions if no GitHub MCP connection is configured.
+
+**Why:** The real gap this closes is "ARCHON gives repo/PR/CI advice without being able to look at the repo/PR/CI it's advising on." A live GitHub connection lets `/archon-review` critique an actual PR diff instead of a paraphrase of one, lets `/archon-repo-audit` inspect the actual GitHub configuration (topics, templates, releases, branch protection) instead of guessing from a description, and lets `/archon-reflect` pull the actual history of a decision (linked issues, past PRs) instead of relying on what the user remembers to mention.
+
+**Why not a broader integration surface (Jira, Slack, cloud provider APIs, etc.):** Those would each need their own justification tied to a specific gap in ARCHON's actual command set, which doesn't exist yet. GitHub is the one integration every one of ARCHON's existing repo/PR/review-facing commands already implicitly assumes exists. Scope creep here is exactly the failure mode ADR-001 already rejected once (adding capability the actual need doesn't call for).
+
+**Trade-offs:** Breaks the literal "zero required external integrations" claim as originally worded. Mitigated by keeping the integration (a) read-only — no write scopes requested, ARCHON never opens PRs, pushes commits, or edits issues on the user's behalf — and (b) optional — the agent degrades gracefully and says so explicitly if no GitHub MCP connection is available, rather than blocking. The README/Features claim is reworded from "zero required external integrations" to "no required external integrations; optional read-only GitHub MCP access when connected" to stay accurate rather than silently drop the constraint.
+
+**Confidence:** Medium — the boundary (GitHub only, read-only only) is a deliberate, narrow interpretation of "add MCP" chosen to avoid the scope creep ADR-001 already warned against. Revisit if a second integration is requested; that should get its own ADR rather than being folded in here by precedent.

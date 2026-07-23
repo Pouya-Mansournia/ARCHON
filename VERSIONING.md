@@ -18,4 +18,4 @@ ARCHON follows [Semantic Versioning 2.0.0](https://semver.org/): `MAJOR.MINOR.PA
 
 ## Current Version
 
-`1.2.0` — full L1-L5 knowledge base (20 skill domains, 57 topics), single ARCHON agent, 8 commands, complete registry and docs set, premium README with hero image and Code of Conduct. See `CHANGELOG.md` for the version history.
+`1.6.0` — full L1-L5 knowledge base (20 skill domains, 57 topics), single ARCHON agent with optional read-only GitHub MCP access (ADR-005), 9 commands including a repo-audit mode with Quick Win/Mermaid/license decision rules, complete registry and docs set, premium README with hero image, a "See It In Action" demo GIF, and Code of Conduct. See `CHANGELOG.md` for the version history.

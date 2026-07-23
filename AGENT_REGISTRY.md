@@ -8,9 +8,9 @@ ARCHON ships a single agent. This registry exists as the canonical record of tha
 | File | `agents/archon.md` |
 | Persona | Principal Engineer / CTO-level technical decision-maker |
 | Levels | L1 Foundations → L2 Software Engineering → L3 Infrastructure & Cloud → L4 Principal Engineering → L5 CTO & Business |
-| Tools | Read, Grep, Glob, WebSearch |
+| Tools | Read, Grep, Glob, WebSearch, `mcp__github__*` (optional, read-only — see ADR-005) |
 | Model | inherit |
-| Invocation | Via the 8 slash commands in `COMMAND_REGISTRY.md`, or directly as a subagent |
+| Invocation | Via the 9 slash commands in `COMMAND_REGISTRY.md`, or directly as a subagent |
 
 ## Why One Agent, Not Many
 

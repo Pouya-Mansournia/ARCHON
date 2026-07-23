@@ -1,6 +1,6 @@
 # Command Registry
 
-All 8 ARCHON slash commands, their purpose, and which level(s)/skill domains they primarily draw on.
+All 9 ARCHON slash commands, their purpose, and which level(s)/skill domains they primarily draw on.
 
 | Command | Mode | Primary use | Key domains drawn on |
 |---|---|---|---|
@@ -12,6 +12,7 @@ All 8 ARCHON slash commands, their purpose, and which level(s)/skill domains the
 | `/archon-review` | Review/critic mode | Critique an existing system, PR, or proposal | `skills/19_Review_Outputs/`, `skills/00_Core/reference/over-under-engineering.md` |
 | `/archon-plan` | Planner mode | Phased MVP/Growth/Scale planning | `skills/02_Product/reference/product-engineering-mvp-pmf.md`, cross-domain |
 | `/archon-reflect` | Reflection mode | Revisit a past decision — Unchanged/Refined/Reversed | `skills/19_Review_Outputs/reference/adr-decision-log-templates.md` |
+| `/archon-repo-audit` | Repository-optimization mode | Full repo audit → benchmark → score → improvement plan (README, docs, architecture, GitHub optimization, license, CI/CD, DX, AI/SEO readability) | `skills/15_Engineering_Practices/reference/documentation-practices.md`, `skills/19_Review_Outputs/`, `skills/00_Core/reference/over-under-engineering.md` |
 
 ## Files
 
@@ -27,6 +28,7 @@ Each command is defined in `commands/<name>.md` with frontmatter (`name`, `descr
 | `commands/archon-review.md` | `/archon-review` |
 | `commands/archon-plan.md` | `/archon-plan` |
 | `commands/archon-reflect.md` | `/archon-reflect` |
+| `commands/archon-repo-audit.md` | `/archon-repo-audit` |
 
 ## Choosing a Command
 

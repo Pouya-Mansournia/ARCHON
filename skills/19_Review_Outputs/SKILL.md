@@ -1,6 +1,6 @@
 ---
 name: review-output-standards
-description: Templates and standards for ARCHON's written outputs — ADRs, decision logs, and review-mode critique formats — ensuring every recommendation across all 8 command modes is structured, traceable, and consistent.
+description: Templates and standards for ARCHON's written outputs — ADRs, decision logs, and review-mode critique formats — ensuring every recommendation across all 9 command modes is structured, traceable, and consistent.
 ---
 
 # 19 — Review & Output Standards (L4)

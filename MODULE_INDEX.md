@@ -26,6 +26,7 @@ The complete map of this repository: every file, what it's for, and how the piec
 | `commands/archon-review.md` | `/archon-review` — critique an existing design. |
 | `commands/archon-plan.md` | `/archon-plan` — phased MVP/Growth/Scale planning. |
 | `commands/archon-reflect.md` | `/archon-reflect` — revisit a past decision. |
+| `commands/archon-repo-audit.md` | `/archon-repo-audit` — repository audit and open-source optimization pipeline. |
 
 See `COMMAND_REGISTRY.md` for the full detail on each.
 
@@ -53,6 +54,7 @@ Twenty domain modules (`00_Core` through `19_Review_Outputs`) plus the cross-cut
 | `docs/SHOWCASE.md` | Narrative scenarios illustrating ARCHON's value. |
 | `docs/BRAND_VOICE.md` | Writing/tone guidelines for contributing new content. |
 | `docs/images/archon_os.png` | README hero image — the decision-convergence diagram referenced at the top of `README.md`. |
+| `docs/images/archon_demo.gif` | README "See It In Action" demo — a ~21s terminal walkthrough of the `/archon-principal` worked example. |
 
 ## Examples (3 files)
 
@@ -95,7 +97,7 @@ Twenty domain modules (`00_Core` through `19_Review_Outputs`) plus the cross-cut
 | `CONTRIBUTING.md` | How to contribute new skills, commands, or content. |
 | `PRE_RELEASE_CHECKLIST.md` | Checklist run before tagging a release. |
 | `AGENT_REGISTRY.md` | Index of the single ARCHON agent. |
-| `COMMAND_REGISTRY.md` | Index of all 8 slash commands. |
+| `COMMAND_REGISTRY.md` | Index of all 9 slash commands. |
 | `SKILL_REGISTRY.md` | Index of all 21 skill modules and 58 reference files. |
 | `MODULE_INDEX.md` | This file — the complete repository map. |
 
